@@ -153,10 +153,3 @@ I built it to learn and understand:
 - How to deploy APIs online  
 - How URL shorteners work behind the scenes
 
----
-
-## 👤 Author
-
-**Rahul**  
-Learning → Building → Growing  
-This project marks the beginning of my backend development journey.
