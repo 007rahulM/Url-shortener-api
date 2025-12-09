@@ -188,7 +188,7 @@ function generateShortCode(){
         //save it to the database
         await newUrl.save();
         res.status(201).json({
-            shortUrl:`http://localhost:${PORT}/${shortCode}`
+            shortUrl:`https://r-url-shortener-api.onrender.com:${PORT}/${shortCode}`
         });
     }
     catch(error){
