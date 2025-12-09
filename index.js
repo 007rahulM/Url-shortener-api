@@ -12,12 +12,16 @@ const express = require('express');
 // import the mongoose library
 const mongoose=require('mongoose');
 
+//import the cors library for cannecti teh forntend 
+const cors=require("cors"); 
 // 2. Create an instance of an express application
 const app = express();
 
 // 3. Define the port our server will run on
-const PORT = 8082;
+const PORT = 3000; //change the port from 8082 to 3000 
 
+
+app.use(cors());
 //this is middleware that tells Express to automatically parse JSON  from request body
 app.use(express.json());
 
@@ -188,7 +192,11 @@ function generateShortCode(){
         //save it to the database
         await newUrl.save();
         res.status(201).json({
+<<<<<<< HEAD
             shortUrl:`https://r-url-shortener-api.onrender.com/${shortCode}`
+=======
+            shortUrl:`https://r-url-shortener-api.onrender.com:${PORT}/${shortCode}`
+>>>>>>> 67a3c2f (changed the locahost to the render url)
         });
     }
     catch(error){
