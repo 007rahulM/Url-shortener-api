@@ -12,16 +12,17 @@ const express = require('express');
 // import the mongoose library
 const mongoose=require('mongoose');
 
+//connectin wiht the frontend so we need cors impor it 
+const cors=require("cors"); 
+
 //import the cors library for cannecti teh forntend 
 const cors=require("cors"); 
 // 2. Create an instance of an express application
 const app = express();
 
 // 3. Define the port our server will run on
-const PORT = 3000; //change the port from 8082 to 3000 
+const PORT = 8082;
 
-
-app.use(cors());
 //this is middleware that tells Express to automatically parse JSON  from request body
 app.use(express.json());
 
