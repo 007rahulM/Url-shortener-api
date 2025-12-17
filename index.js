@@ -194,11 +194,8 @@ function generateShortCode(){
         //save it to the database
         await newUrl.save();
         res.status(201).json({
-<<<<<<< HEAD
             shortUrl:`https://r-url-shortener-api.onrender.com/${shortCode}`
-=======
             shortUrl:`https://r-url-shortener-api.onrender.com:${PORT}/${shortCode}`
->>>>>>> 67a3c2f (changed the locahost to the render url)
         });
     }
     catch(error){
