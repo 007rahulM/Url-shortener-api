@@ -26,7 +26,7 @@ const PORT = process.env.PORT||8082;
 //this is middleware that tells Express to automatically parse JSON  from request body
 app.use(express.json());
 
-app.use(core()); 
+app.use(cors()); 
 
 //new--this is our memory database its a simple js object
 
@@ -170,7 +170,7 @@ function generateShortCode(){
     try{
         const{longUrl}=req.body;
         if(!longUrl){
-            return res.status(400).json({error:"longurl is required"});
+            return res.status(400).json({error:"longUrl is required"});
 
         }
 
