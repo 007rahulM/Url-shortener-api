@@ -13,20 +13,20 @@ const express = require('express');
 const mongoose=require('mongoose');
 
 //connectin wiht the frontend so we need cors impor it 
-const cors=require("cors"); 
+const cors = require("cors");
 
 /
 // 2. Create an instance of an express application
 const app = express();
 
 // 3. Define the port our server will run on
-const PORT = 3000;
+const PORT = process.env.PORT||8082;
 
-app.use(core()); 
 
 //this is middleware that tells Express to automatically parse JSON  from request body
 app.use(express.json());
 
+app.use(core()); 
 
 //new--this is our memory database its a simple js object
 
@@ -160,7 +160,7 @@ function generateShortCode(){
                      //updated final loutes with logic//
                      
    app.get('/health',(req,res) => {
-    res.json({status:"API is healty",  db:mongoose.connect.readyState==1?"connected":"disconnected"});
+    res.json({status:"API is healty",  db:mongoose.connection.readyState==1?"connected":"disconnected"});
 
    }) ;  
    
@@ -170,7 +170,7 @@ function generateShortCode(){
     try{
         const{longUrl}=req.body;
         if(!longUrl){
-            return res.status(400).json({error:"lonurl is required"});
+            return res.status(400).json({error:"longurl is required"});
 
         }
 
@@ -194,8 +194,8 @@ function generateShortCode(){
         //save it to the database
         await newUrl.save();
         res.status(201).json({
-            //shortUrl:`https://r-url-shortener-api.onrender.com/${shortCode}`
-            shortUrl:`https://r-url-shortener-api.onrender.com:${PORT}/${shortCode}`
+            shortUrl:`https://r-url-shortener-api.onrender.com/${shortCode}`
+            //shortUrl:`https://r-url-shortener-api.onrender.com:${PORT}/${shortCode}`
         });
     }
     catch(error){
@@ -274,5 +274,5 @@ app.get('/', (req, res) => {
 
 // 5. Start the server and listen for incoming requests
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on ${PORT}`);
 });
