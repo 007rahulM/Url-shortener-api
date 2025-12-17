@@ -15,7 +15,7 @@ const mongoose=require('mongoose');
 //connectin wiht the frontend so we need cors impor it 
 const cors = require("cors");
 
-/
+
 // 2. Create an instance of an express application
 const app = express();
 
